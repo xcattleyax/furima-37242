@@ -25,7 +25,7 @@
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
-| info               | string     | null: false                    |
+| info               | text       | null: false                    |
 | category           | string     | null: false                    |
 | sales_status       | string     | null: false                    |
 | shipping_fee       | string     | null: false                    |
