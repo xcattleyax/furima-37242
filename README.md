@@ -37,7 +37,21 @@
 ### Association
 
 - belongs_to :user
-- has_one :transaction
+- has_one :orders
+
+## orders テーブル
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| item    | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
+
+
+### Association
+
+-belongs_to :user
+-belongs_to :item
+-has_one :transaction
 
 ## transactions テーブル
 
@@ -49,10 +63,8 @@
 | addresses      | string     | null: false                    |
 | building       | string     |                                |
 | phone_number   | string     | null: false                    |
-| user_id        | references | null: false, foreign_key: true |
-| item_id        | references | null: false, foreign_key: true |
+| order          | references | null: false, foreign_key: true |
 
 ### Association
 
--belongs_to :user
--belongs_to :item
+-belongs_to :order
