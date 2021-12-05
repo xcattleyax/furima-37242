@@ -5,14 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true
-  with_options format: { with:/\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: 'アルファベット、数字の両方を使用してください'} do
+  with_options format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: 'アルファベット、数字の両方を使用してください' } do
     validates :password
   end
-  with_options presence: true, format: { with:/\A[ぁ-んァ-ン一-龥]/, message: '全角で入力してください'} do
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: '全角で入力してください' } do
     validates :last_name
     validates :first_name
   end
-  with_options presence: true, format: { with:/\A[ァ-ヶ--]+\z/, message: '全角カタカナで入力してください'} do
+  with_options presence: true, format: { with: /\A[ァ-ヶ--]+\z/, message: '全角カタカナで入力してください' } do
     validates :last_name_kana
     validates :first_name_kana
   end

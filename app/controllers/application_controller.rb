@@ -6,12 +6,12 @@ class ApplicationController < ActionController::Base
 
   def basic_auth_furima
     authenticate_or_request_with_http_basic do |username, password|
-      username == ENV["BASIC_AUTH_FURIMA_USER"] && password == ENV["BASIC_AUTH_FURIMA_PASSWORD"]
+      username == ENV['BASIC_AUTH_FURIMA_USER'] && password == ENV['BASIC_AUTH_FURIMA_PASSWORD']
     end
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday])
+    devise_parameter_sanitizer.permit(:sign_up,
+                                      keys: [:nickname, :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday])
   end
-
 end
