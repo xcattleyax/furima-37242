@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to :ShippingFee
   belongs_to :Prefecture
   belongs_to :ScheduledDelivery
+  has_one_attached :image
 
   with_options presence: true do
     validates :name
