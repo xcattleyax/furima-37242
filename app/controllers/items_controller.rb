@@ -6,6 +6,6 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-  def edit
+  def create
   end
 end
