@@ -20,9 +20,8 @@ class Item < ApplicationRecord
       validates :prefecture_id
       validates :scheduled_delivery_id
     end
-    with_options format:{ with: /\A[0-9]+\z/i, message: '半角で入力してください' } do
-      validates :price,numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
-    end
+    validates :price,numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+    validates :image
   end
   
 end
