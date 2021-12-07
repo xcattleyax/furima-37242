@@ -48,9 +48,9 @@
 
 -belongs_to :user
 -belongs_to :item
--has_one :order_info
+-has_one :order_details
 
-## order_info テーブル
+## order_details テーブル
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
