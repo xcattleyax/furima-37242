@@ -29,9 +29,3 @@ class ItemsController < ApplicationController
                                  :scheduled_delivery_id, :price, :image).merge(user_id: current_user.id)
   end
 end
-
-# def show
-#   user = User.find(params[:id])
-#   @nickname = user.nickname
-#   @tweets = user.tweets
-# end
