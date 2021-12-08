@@ -1,0 +1,1 @@
+Webpacker::Compiler.env["PAYJP_PUBLIC_KEY"] = ENV["PAYJP/PUBLIC_KEY"]
