@@ -1,19 +1,20 @@
 class OrdersController < ApplicationController
 
+  before_action :set_item, only: [:index, :create]
+  before_action :move_to_root, only: [:index]
+
+
   def index
-    @item = Item.find(params[:item_id])
     @detail = Detail.new
   end
 
   def create
     @order = Detail.new(order_params)
-
     if @order.valid?
       pay_item
       @order.save
       return redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       @detail = @order
       render 'index'
     end
@@ -34,4 +35,15 @@ class OrdersController < ApplicationController
     )
   end
 
+  private
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
+  def move_to_root
+    unless user_signed_in? && current_user.id != @item.user_id
+      redirect_to root_path
+    end
+  end
 end
