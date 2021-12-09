@@ -29,6 +29,16 @@ RSpec.describe Detail, type: :model do
         @detail.valid?
         expect(@detail.errors.full_messages).to include("User can't be blank")
       end
+      it 'postal_codeが未入力' do
+        @detail.postal_code = ''
+        @detail.valid?
+        expect(@detail.errors.full_messages).to include("Postal code can't be blank")
+      end
+      it 'postal_codeにハイフンがない場合、保存できない' do
+        @detail.postal_code = 7778888
+        @detail.valid?
+        expect(@detail.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+      end
       it 'prefecture_idが未入力' do
         @detail.prefecture_id = '1'
         @detail.valid?
@@ -46,6 +56,21 @@ RSpec.describe Detail, type: :model do
       end
       it 'phone_numberが未入力' do
         @detail.phone_number = ''
+        @detail.valid?
+        expect(@detail.errors.full_messages).to include('Phone number (-)を入れず10桁もしくは11桁で入力してください')
+      end
+      it 'phone_numberが9桁以下である' do
+        @detail.phone_number = 000
+        @detail.valid?
+        expect(@detail.errors.full_messages).to include('Phone number (-)を入れず10桁もしくは11桁で入力してください')
+      end
+      it 'phone_numberが12桁以上である' do
+        @detail.phone_number = 111222333444
+        @detail.valid?
+        expect(@detail.errors.full_messages).to include('Phone number (-)を入れず10桁もしくは11桁で入力してください')
+      end
+      it 'phone_numberに数字以外が含まれている' do
+        @detail.phone_number = "090-0000-22"
         @detail.valid?
         expect(@detail.errors.full_messages).to include('Phone number (-)を入れず10桁もしくは11桁で入力してください')
       end
