@@ -1,5 +1,4 @@
 class OrderDetail < ApplicationRecord
-
   belongs_to :order
 
   extend ActiveHash::Associations::ActiveRecordExtensions
