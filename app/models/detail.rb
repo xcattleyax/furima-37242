@@ -10,8 +10,8 @@ class Detail
     validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
     validates :city
     validates :addresses
-    validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "(-)を入れず10桁もしくは11桁で入力してください"}
   end
+  validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "(-)を入れず10桁もしくは11桁で入力してください"}
 
   def save
     order = Order.create(item_id: item_id, user_id: user_id)
