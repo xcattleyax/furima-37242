@@ -51,6 +51,8 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    redirect_to action: :index unless user_signed_in? && current_user.id == @item.user_id
+    unless user_signed_in? && current_user.id == @item.user_id && Order.pluck("item_id").include?(@item.id)
+      redirect_to action: :index
+    end
   end
 end
