@@ -4,7 +4,8 @@ RSpec.describe Detail, type: :model do
   describe '購入情報の保存' do
     before do
       item = FactoryBot.create(:item)
-      @detail = FactoryBot.build(:detail, item_id: item.id, user_id: item.user_id)
+      user = FactoryBot.create(:user)
+      @detail = FactoryBot.build(:detail, item_id: item.id, user_id: user.id)
       sleep 0.1
     end
 
