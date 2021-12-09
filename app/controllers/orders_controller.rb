@@ -40,6 +40,8 @@ class OrdersController < ApplicationController
   end
 
   def move_to_root
-    redirect_to root_path unless user_signed_in? && current_user.id != @item.user_id && Order.pluck('item_id').include?(@item.id) == false
+    unless user_signed_in? && current_user.id != @item.user_id && Order.pluck('item_id').include?(@item.id) == false
+      redirect_to root_path
+    end
   end
 end
